@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Hello World | 小泽的笔记</title>
+  <title itemprop="name">校园网 | 小泽的笔记</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -406,26 +406,23 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
           <header class="entry-header">
-            <h1 class="entry-title">Hello World</h1>
-            <p class="entry-census">&nbsp;·&nbsp;2021-12-15&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <h1 class="entry-title">校园网</h1>
+            <p class="entry-census">&nbsp;·&nbsp;2021-12-16&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+          <p>#Python实现校园网账号自动登录</p>
+<h2 id="北京联合大学校园网账号实行一人一号制，用户每次登录校园网时都要打开浏览器输入账号密码才能登录，为了简化操作，请大家用Python实现校园网账号自动登录。"><a href="#北京联合大学校园网账号实行一人一号制，用户每次登录校园网时都要打开浏览器输入账号密码才能登录，为了简化操作，请大家用Python实现校园网账号自动登录。" class="headerlink" title="#####北京联合大学校园网账号实行一人一号制，用户每次登录校园网时都要打开浏览器输入账号密码才能登录，为了简化操作，请大家用Python实现校园网账号自动登录。"></a>#####北京联合大学校园网账号实行一人一号制，用户每次登录校园网时都要打开浏览器输入账号密码才能登录，为了简化操作，请大家用Python实现校园网账号自动登录。</h2><p>###1.实验代码<br>####解答：<br>#####import requests</p>
+<p>post_addr=”<a target="_blank" rel="noopener" href="http://10.11.7.56/&quot;">http://10.11.7.56/&quot;</a></p>
+<p>post_header={<br>    ‘Host’: ‘10.11.7.56’,<br>    ‘User-Agent’:’Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0’,<br>    ‘Accept’:’text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,<em>/</em>;q=0.8’,<br>    ‘Referer’:’<a target="_blank" rel="noopener" href="http://10.11.7.56/F.htm&#39;">http://10.11.7.56/F.htm&#39;</a>,<br>    ‘Accept-Encoding’:’gzip, deflate’,<br>    ‘Accept-Language’:’zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2’,<br>    ‘Connection’:’keep-alive’,<br>    ‘Upgrade-Insecure-Requests’:’1’<br>}</p>
+<p>post_data={‘username’:’2020250360018’,<br>            ‘password’:’220016’<br>          }</p>
+<h2 id="z-requests-post-post-addr-data-post-data-headers-post-header"><a href="#z-requests-post-post-addr-data-post-data-headers-post-header" class="headerlink" title="z=requests.post(post_addr,data=post_data,headers=post_header)"></a>z=requests.post(post_addr,data=post_data,headers=post_header)</h2><p>###程序运行结果：<br><img src="1.jpg" alt="1"><br>#####运行后，能把之前注销的校园网重新自动登录</p>
+<hr>
+<p>###遇到的问题与解决的方法<br>#####没有问题</p>
+<hr>
+<p>###感想与建议<br>#####难度适中</p>
 
         </div>
         <!-- .entry-content -->
@@ -454,6 +451,23 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/12/16/%E5%AF%BC%E5%B8%88%E5%88%86%E9%85%8D/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                导师分配</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
         
       </section>
       
