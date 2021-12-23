@@ -439,7 +439,13 @@ print(s)
 <h2 id="程序运行结果：-1"><a href="#程序运行结果：-1" class="headerlink" title="程序运行结果："></a>程序运行结果：</h2><p><img src="4.jpg" alt="4"></p>
 <hr>
 <h1 id="4-3-制作随机验证码，不区分大小写。"><a href="#4-3-制作随机验证码，不区分大小写。" class="headerlink" title="4.3  制作随机验证码，不区分大小写。"></a>4.3  制作随机验证码，不区分大小写。</h1><p>流程：<br>   1）用户执行程序<br>   2）给用户显示需要输入验证码<br>   3）用户输入的值用户输入的值和显示的值相同时显示正确的信息:否则继续生成验证码等待用户输入</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h2><hr>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h2><p>import random</p>
+<p>def shengcheng():<br>    list1 = []<br>    str1=’’<br>    c=random.randint(0,3)                             #生成随机数c，值随机为0-3<br>    for i in range(0,4):                              #重复运行四次<br>        if c==i:                                      #如果c=i,输出数字<br>            list1.append(random.randint(0,9))<br>        else:                                         #如果c!=i,输出字母<br>            list1.append(chr(random.randint(65,90)))   #chr函数：将对应数字转为对应ascll码<br>    for i in list1:                                   #将列表转为字符串<br>        str1+=str(i)<br>    return str1</p>
+<p>while True:                                      #循环<br>    yanzhengma=shengcheng()<br>    print(‘请输入此验证码：\t\t%s’%yanzhengma)    #表示出要输入的随机验证码<br>    yonghu=input(‘请输入验证码：’)                 #输入验证码<br>    if yanzhengma.casefold()==yonghu.casefold():   #casefold函数作用为不区分大小写<br>                                                   #如果验证码(不区分大小写)  一致则跳出循环<br>        print(‘通过验证’)<br>        break<br>    else:                                            #如果不一致则继续生成验证码，循环验证<br>        print(‘没有通过验证,请重新输入验证码’)</p>
+<p><img src="5.png" alt="5"></p>
+<hr>
+<p><img src="6.png" alt="6"></p>
+<hr>
 <h2 id="遇到的问题与解决的方法"><a href="#遇到的问题与解决的方法" class="headerlink" title="遇到的问题与解决的方法"></a>遇到的问题与解决的方法</h2><p>没有问题</p>
 <hr>
 <h2 id="感想与建议"><a href="#感想与建议" class="headerlink" title="感想与建议"></a>感想与建议</h2><p>难度适中</p>
