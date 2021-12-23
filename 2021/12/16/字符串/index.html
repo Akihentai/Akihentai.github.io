@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2021 | 小泽的笔记</title>
+  <title itemprop="name">字符串 | 小泽的笔记</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -372,117 +372,177 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/reading.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/reading.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      字符串</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-12-16<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                          <span style="color:#0bf;">
-                          23日07:17:37</span>
-                          天气预报数据库
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E7%BD%91%E9%A1%B5%E7%89%88/">
-                          <span style="color:#0bf;">
-                          23日07:17:20</span>
-                          天气预报网页版
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                          <span style="color:#0bf;">
-                          16日13:33:31</span>
-                          字符串
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E6%A0%A1%E5%9B%AD%E7%BD%91/">
-                          <span style="color:#0bf;">
-                          16日13:33:31</span>
-                          校园网
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E5%AF%BC%E5%B8%88%E5%88%86%E9%85%8D/">
-                          <span style="color:#0bf;">
-                          16日13:22:03</span>
-                          导师分配
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="4-1-字符串"><a href="#4-1-字符串" class="headerlink" title="4.1 字符串"></a>4.1 字符串</h1><p>假定给定两个字符串（可以是空串）s1和s2,要将这两个串合并在一起，要求是：s1串的第一个字符与s2串的第一个字符连接在一起，后续以此类推。若一个串的长度大于另一个串的长度，则保留长串的剩余字符，即连接到新串的末尾即可。例如：若s1=’abcd’、s2=’efghi’，则新串为：‘aebfcgdhi’.</p>
+<hr>
+<h2 id="1-实验代码"><a href="#1-实验代码" class="headerlink" title="1.实验代码"></a>1.实验代码</h2><h2 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h2><p>s1 = input(“请输入字符串s1:”)<br>s2 = input(“请输入字符串s2:”)<br>list1 = []<br>list2 = []<br>i = 0<br>j = 0<br>k = 0<br>m = 0<br>n = 0<br>if len(s1) == 0:<br>    print(s2)<br>elif len(s2) == 0:<br>    print(s1)<br>else:<br>    for i in range(len(s1)):<br>            list1.append(s1[i:i+1])<br>            i=i+1<br>    for j in range(len(s2)):<br>            list2.append(s2[j:j+1])<br>            j= j+1</p>
+<pre><code>s =list1[0] +list2[0]
+
+if len(s1) &gt;= len(s2):
+    for k in range(len(s2)-1):
+        s = s + list1[k+1] +list2[k+1]
+        k=k + 1
+    m = len(s2)
+    for m in range(len(s1)):
+        s = s + list1[m]
+
+elif len(s1) &lt; len(s2):
+    for k in range(len(s1)-1):
+        s = s + list2[k+1] + list1[k+1]
+        k=k + 1
+    n = len(s1)
+    for m in range(len(s1)):
+        s = s + list1[n]
+
+print(s)
+</code></pre>
+<hr>
+<h2 id="程序运行结果："><a href="#程序运行结果：" class="headerlink" title="程序运行结果："></a>程序运行结果：</h2><p><img src="1.jpg" alt="1"><br><img src="2.jpg" alt="2"><br><img src="3.jpg" alt="3"></p>
+<hr>
+<h1 id="4-2-对于用户输入的任意字符串，只显示字母和数字"><a href="#4-2-对于用户输入的任意字符串，只显示字母和数字" class="headerlink" title="4.2  对于用户输入的任意字符串，只显示字母和数字"></a>4.2  对于用户输入的任意字符串，只显示字母和数字</h1><h2 id="解答：-1"><a href="#解答：-1" class="headerlink" title="解答："></a>解答：</h2><p>x = input(“请输入字符串:”)<br>x = ‘’.join(filter(str.isalnum, x))<br>print(x)</p>
+<hr>
+<h2 id="程序运行结果：-1"><a href="#程序运行结果：-1" class="headerlink" title="程序运行结果："></a>程序运行结果：</h2><p><img src="4.jpg" alt="4"></p>
+<hr>
+<h1 id="4-3-制作随机验证码，不区分大小写。"><a href="#4-3-制作随机验证码，不区分大小写。" class="headerlink" title="4.3  制作随机验证码，不区分大小写。"></a>4.3  制作随机验证码，不区分大小写。</h1><p>流程：<br>   1）用户执行程序<br>   2）给用户显示需要输入验证码<br>   3）用户输入的值用户输入的值和显示的值相同时显示正确的信息:否则继续生成验证码等待用户输入</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h2><hr>
+<h2 id="遇到的问题与解决的方法"><a href="#遇到的问题与解决的方法" class="headerlink" title="遇到的问题与解决的方法"></a>遇到的问题与解决的方法</h2><p>没有问题</p>
+<hr>
+<h2 id="感想与建议"><a href="#感想与建议" class="headerlink" title="感想与建议"></a>感想与建议</h2><p>难度适中</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6null"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E7%BD%91%E9%A1%B5%E7%89%88/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://lain.bgm.tv/pic/cover/l/0e/1e/218971_2y351.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://lain.bgm.tv/pic/cover/l/0e/1e/218971_2y351.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                天气预报网页版</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/12/16/%E6%A0%A1%E5%9B%AD%E7%BD%91/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.4/img/banner/links.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.4/img/banner/links.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                校园网</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+
+
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

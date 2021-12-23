@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2021 | 小泽的笔记</title>
+  <title itemprop="name">天气预报数据库 | 小泽的笔记</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -372,117 +372,130 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      天气预报数据库</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-12-23<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                          <span style="color:#0bf;">
-                          23日07:17:37</span>
-                          天气预报数据库
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E7%BD%91%E9%A1%B5%E7%89%88/">
-                          <span style="color:#0bf;">
-                          23日07:17:20</span>
-                          天气预报网页版
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                          <span style="color:#0bf;">
-                          16日13:33:31</span>
-                          字符串
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E6%A0%A1%E5%9B%AD%E7%BD%91/">
-                          <span style="color:#0bf;">
-                          16日13:33:31</span>
-                          校园网
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E5%AF%BC%E5%B8%88%E5%88%86%E9%85%8D/">
-                          <span style="color:#0bf;">
-                          16日13:22:03</span>
-                          导师分配
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="天气预报数据库"><a href="#天气预报数据库" class="headerlink" title="天气预报数据库"></a>天气预报数据库</h1><hr>
+<p>import requests<br>from bs4 import BeautifulSoup<br>import os<br>from xpinyin import Pinyin<br>import time as t<br>city = []<br>def creat_city_list():<br>    with open(‘city.txt’,’r’,encoding = ‘utf-8’) as f:<br>        for line in f:<br>            city.append(line.strip(‘\n’).replace(‘ ‘,’’))</p>
+<p>def getUrl(url):<br>    try:<br>        headers = {“User-Agent”:”Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36”}<br>        read = requests.get(url,headers = headers)  #获取url<br>        read.raise_for_status()   #状态响应 返回200连接成功<br>        read.encoding = read.apparent_encoding  #从内容中分析出响应内容编码方式<br>        return read.text    #Http响应内容的字符串，即url对应的页面内容<br>    except:<br>        return “连接失败！”</p>
+<p>def getPic(html,pinyin):<br>    today_time = t.localtime(t.time())<br>    year = today_time.tm_year<br>    month = today_time.tm_mon<br>    day = today_time.tm_mday<br>    soup = BeautifulSoup(html, “html.parser”)<br>    #通过分析网页内容，查找img的统一父类及属性<br>    all_img = soup.find(‘a’,href = ‘./2020-‘ + str(month) +’-‘ +str(day)  + ‘.html’).find(‘div’, class_=’mt’).find_all(‘img’) #img为图片的标<br>    for img in all_img[:1]:<br>        src = img[‘src’]  #获取img标签里的src内容<br>        img_url = src<br>        print(img_url)<br>        root = “F:/Pic/“ + str(month) + ‘-‘ + str(day) + “/“ #保存的路径<br>        path = root + pinyin + “.png”  #保存    img的文件名<br>        print(path)<br>        try:<br>            if not os.path.exists(root):  #判断是否存在文件并下载img<br>                os.mkdir(root)<br>            if not os.path.exists(path):<br>                read = requests.get(img_url)<br>                with open(path, “wb”)as f:<br>                    f.write(read.content)<br>                    f.close()<br>                    print(“文件保存成功！”)<br>            else:<br>                    print(“文件已存在！”)<br>        except:<br>            print(“文件爬取失败！”)</p>
+<p>if <strong>name</strong>  == “<strong>main</strong>“:<br>    creat_city_list()<br>    for city_name in city:<br>        p = Pinyin()<br>        city_pinyin =  p.get_pinyin(city_name,””)<br>        html_url=getUrl(“<a target="_blank" rel="noopener" href="https://tianqi.911cha.com/&quot;">https://tianqi.911cha.com/&quot;</a> +city_pinyin)<br>        try:  #防止pinyin个别城市解析异常，影响循环<br>          getPic(html_url,city_pinyin)<br>        except:<br>          print(“fail”)<br>          continue</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6null"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E7%BD%91%E9%A1%B5%E7%89%88/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://lain.bgm.tv/pic/cover/l/0e/1e/218971_2y351.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://lain.bgm.tv/pic/cover/l/0e/1e/218971_2y351.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                天气预报网页版</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+
+
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

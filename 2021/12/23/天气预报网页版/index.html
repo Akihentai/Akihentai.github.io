@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2021 | 小泽的笔记</title>
+  <title itemprop="name">天气预报网页版 | 小泽的笔记</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -372,117 +372,228 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://lain.bgm.tv/pic/cover/l/0e/1e/218971_2y351.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://lain.bgm.tv/pic/cover/l/0e/1e/218971_2y351.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      天气预报网页版</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2021-12-23<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2021年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      12月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                          <span style="color:#0bf;">
-                          23日07:17:37</span>
-                          天气预报数据库
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E7%BD%91%E9%A1%B5%E7%89%88/">
-                          <span style="color:#0bf;">
-                          23日07:17:20</span>
-                          天气预报网页版
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                          <span style="color:#0bf;">
-                          16日13:33:31</span>
-                          字符串
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E6%A0%A1%E5%9B%AD%E7%BD%91/">
-                          <span style="color:#0bf;">
-                          16日13:33:31</span>
-                          校园网
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2021/12/16/%E5%AF%BC%E5%B8%88%E5%88%86%E9%85%8D/">
-                          <span style="color:#0bf;">
-                          16日13:22:03</span>
-                          导师分配
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="天气预报网页版"><a href="#天气预报网页版" class="headerlink" title="天气预报网页版"></a>天气预报网页版</h1><hr>
+<h2 id="F1-py"><a href="#F1-py" class="headerlink" title="F1.py"></a>F1.py</h2><pre><code>import urllib.request
+import xpinyin
+from bs4 import BeautifulSoup
+
+def get_weather(city_pinyin):
+    header = &#123;&#39;User-Agent&#39;:&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0&#39;&#125;
+    website = &quot;http://www.tianqi.com/&quot; + city_pinyin + &quot;.html&quot;
+    req = urllib.request.Request(url=website,headers=header)
+    page = urllib.request.urlopen(req)
+    html = page.read()
+    soup = BeautifulSoup(html.decode(&quot;utf-8&quot;),&quot;html.parser&quot;)  #html.parser表示解析使用的解析器
+    nodes = soup.find_all(&#39;dd&#39;)
+    tody_weather = &quot;&quot;
+    for node in nodes:
+        temp = node.get_text()
+        if (temp.find(&#39;[切换城市]&#39;)):
+            temp = temp[:temp.find(&#39;[切换城市]&#39;)]
+        tody_weather += temp
+return tody_weather
+
+if __name__ == &quot;__main__&quot;:
+    pin = xpinyin.Pinyin()
+    city_pinyin = pin.get_pinyin(&quot;杭州&quot;,&quot;&quot;)
+    tody_weather = get_weather(city_pinyin)
+ print(tody_weather)
+</code></pre>
+<hr>
+<h2 id="F2-py"><a href="#F2-py" class="headerlink" title="F2.py"></a>F2.py</h2><p>import urllib.request<br>import gzip</p>
+<p>city_name=input(‘请输入要查询的城市名称：’)</p>
+<p>urllib.parse.quote(city_name)</p>
+<p>url=’<a target="_blank" rel="noopener" href="http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)">http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)</a></p>
+<p>weather_data=urllib.request.urlopen(url).read()<br>weather_data=gzip.decompress(weather_data).decode(‘utf-8’)</p>
+<p>weather_dict=eval(weather_data)<br>if weather_dict.get(‘desc’)==’invilad-citykey’:<br>    print(‘您输入的城市未录入’)</p>
+<p>print(‘您查询的城市：’,weather_dict[‘data’][‘city’])<br>print(‘—————‘)<br>print(‘温度’,weather_dict[‘data’][‘wendu’])<br>print(‘感冒指数’,weather_dict[‘data’][‘ganmao’])<br>print(‘—————‘)<br>print(‘昨天的天气’,weather_dict[‘data’][‘yesterday’][‘date’])<br>print(‘天气’,weather_dict[‘data’][‘yesterday’][‘type’])<br>print(‘最高气温’,weather_dict[‘data’][‘yesterday’][‘high’])<br>print(‘最低气温’,weather_dict[‘data’][‘yesterday’][‘low’])<br>print(‘风向’,weather_dict[‘data’][‘yesterday’][‘fx’])<br>print(‘风力’,weather_dict[‘data’][‘yesterday’][‘fl’][-5:-3])<br>print(‘—————‘)</p>
+<p>for each in weather_dict[‘data’][‘forecast’]:<br>    print(‘日期’,each[‘date’])<br>    print(‘天气’,each[‘type’])<br>    print(each[‘high’])<br>    print(each[‘low’])<br>    print(‘风向’,each[‘fengxiang’])<br>    print(‘风力’,each[‘fengli’][-5:-3])<br>    print(‘—————‘)    </p>
+<hr>
+<h2 id="F3-py"><a href="#F3-py" class="headerlink" title="F3.py"></a>F3.py</h2><p>import sys<br>import urllib.request<br>import gzip<br>import json<br>import xlrd<br>import xlwt<br>from PyQt5 import QtCore, QtGui, QtWidgets<br>from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QRadioButton<br>from PyQt5.QtGui import QPixmap,QPainter<br>from Ui import Ui_Form<br>from xpinyin import Pinyin<br>import time as t</p>
+<p>class MyMainForm(QMainWindow, Ui_Form):<br>    def <strong>init</strong>(self, parent=None):<br>        super(MyMainForm, self).<strong>init</strong>(parent)<br>        self.setupUi(self)<br>        #添加查询按钮信号和槽。注意display和showMsg函数不加小括号()<br>        self.pushButton.clicked.connect(self.display)<br>        self.pushButton.clicked.connect(self.showMsg)<br>        #添加退出按钮信号和槽。调用close函数<br>        self.pushButton_2.clicked.connect(self.close)</p>
+<pre><code>def showMsg(self): #显示天气图片数据
+    today_time = t.localtime(t.time()) #今天日期
+    year = today_time.tm_year
+    month = today_time.tm_mon
+    day = today_time.tm_mday
+    city = self.lineEdit.text()
+    p = Pinyin()
+    city_pinyin = p.get_pinyin(city, &quot;&quot;)
+
+def display(self):  #显示天气文字数据
+    datas = xlrd.open_workbook(&#39;D:\\断网天气预报\\weather.xlsx&#39;)
+    w = datas.sheets()[0]  #打开表单
+    city = self.lineEdit.text()   #获取输入的城市名称
+    number = int(w.nrows) #循环查找对应城市数据
+    for i in range(number):
+        city_name = w.cell(i, 0).value
+        if city == city_name:
+            date = w.cell(i, 1).value
+            data = w.cell(i, 2).value
+            self.textBrowser.setText(date + &#39;\n&#39; + data + &#39;\n&#39; + &quot;当天天气情况：&quot;)
+</code></pre>
+<p>if <strong>name</strong> == “<strong>main</strong>“:<br>    #固定的，PyQt5程序都需要QApplication对象。sys.argv是命令行参数列表，确保程序可以双击运行<br>    app = QApplication(sys.argv)<br>    #初始化<br>    myWin = MyMainForm()<br>    #将窗口控件显示在屏幕上<br>    myWin.show()<br>    #程序运行，sys.exit方法确保程序完整退出。<br>    sys.exit(app.exec_())</p>
+<hr>
+<h2 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h2><p>import sys<br>import urllib.request<br>import gzip<br>import json<br>import xlrd<br>import xlwt<br>from PyQt5 import QtCore, QtGui, QtWidgets<br>from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QRadioButton<br>from PyQt5.QtGui import QPixmap,QPainter<br>from Ui import Ui_Form<br>from xpinyin import Pinyin<br>import time as t</p>
+<p>class MyMainForm(QMainWindow, Ui_Form):<br>    def <strong>init</strong>(self, parent=None):<br>        super(MyMainForm, self).<strong>init</strong>(parent)<br>        self.setupUi(self)<br>        #添加查询按钮信号和槽。注意display和showMsg函数不加小括号()<br>        self.pushButton.clicked.connect(self.display)<br>        self.pushButton.clicked.connect(self.showMsg)<br>        #添加退出按钮信号和槽。调用close函数<br>        self.pushButton_2.clicked.connect(self.close)</p>
+<pre><code>def showMsg(self): #显示天气图片数据
+    today_time = t.localtime(t.time()) #今天日期
+    year = today_time.tm_year
+    month = today_time.tm_mon
+    day = today_time.tm_mday
+    city = self.lineEdit.text()
+    p = Pinyin()
+    city_pinyin = p.get_pinyin(city, &quot;&quot;)
+
+def display(self):  #显示天气文字数据
+    datas = xlrd.open_workbook(&#39;D:\\断网天气预报\\weather.xlsx&#39;)
+    w = datas.sheets()[0]  #打开表单
+    city = self.lineEdit.text()   #获取输入的城市名称
+    number = int(w.nrows) #循环查找对应城市数据
+    for i in range(number):
+        city_name = w.cell(i, 0).value
+        if city == city_name:
+            date = w.cell(i, 1).value
+            data = w.cell(i, 2).value
+            self.textBrowser.setText(date + &#39;\n&#39; + data + &#39;\n&#39; + &quot;当天天气情况：&quot;)
+</code></pre>
+<p>if <strong>name</strong> == “<strong>main</strong>“:<br>    #固定的，PyQt5程序都需要QApplication对象。sys.argv是命令行参数列表，确保程序可以双击运行<br>    app = QApplication(sys.argv)<br>    #初始化<br>    myWin = MyMainForm()<br>    #将窗口控件显示在屏幕上<br>    myWin.show()<br>    #程序运行，sys.exit方法确保程序完整退出。<br>    sys.exit(app.exec_())</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6null"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6null"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2021/12/23/%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/coding.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                天气预报数据库</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2021/12/16/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/reading.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/reading.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                字符串</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+
+
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
