@@ -408,11 +408,37 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="天气预报数据库"><a href="#天气预报数据库" class="headerlink" title="天气预报数据库"></a>天气预报数据库</h1><hr>
-<p>import requests<br>from bs4 import BeautifulSoup<br>import os<br>from xpinyin import Pinyin<br>import time as t<br>city = []<br>def creat_city_list():<br>    with open(‘city.txt’,’r’,encoding = ‘utf-8’) as f:<br>        for line in f:<br>            city.append(line.strip(‘\n’).replace(‘ ‘,’’))</p>
-<p>def getUrl(url):<br>    try:<br>        headers = {“User-Agent”:”Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36”}<br>        read = requests.get(url,headers = headers)  #获取url<br>        read.raise_for_status()   #状态响应 返回200连接成功<br>        read.encoding = read.apparent_encoding  #从内容中分析出响应内容编码方式<br>        return read.text    #Http响应内容的字符串，即url对应的页面内容<br>    except:<br>        return “连接失败！”</p>
-<p>def getPic(html,pinyin):<br>    today_time = t.localtime(t.time())<br>    year = today_time.tm_year<br>    month = today_time.tm_mon<br>    day = today_time.tm_mday<br>    soup = BeautifulSoup(html, “html.parser”)<br>    #通过分析网页内容，查找img的统一父类及属性<br>    all_img = soup.find(‘a’,href = ‘./2020-‘ + str(month) +’-‘ +str(day)  + ‘.html’).find(‘div’, class_=’mt’).find_all(‘img’) #img为图片的标<br>    for img in all_img[:1]:<br>        src = img[‘src’]  #获取img标签里的src内容<br>        img_url = src<br>        print(img_url)<br>        root = “F:/Pic/“ + str(month) + ‘-‘ + str(day) + “/“ #保存的路径<br>        path = root + pinyin + “.png”  #保存    img的文件名<br>        print(path)<br>        try:<br>            if not os.path.exists(root):  #判断是否存在文件并下载img<br>                os.mkdir(root)<br>            if not os.path.exists(path):<br>                read = requests.get(img_url)<br>                with open(path, “wb”)as f:<br>                    f.write(read.content)<br>                    f.close()<br>                    print(“文件保存成功！”)<br>            else:<br>                    print(“文件已存在！”)<br>        except:<br>            print(“文件爬取失败！”)</p>
-<p>if <strong>name</strong>  == “<strong>main</strong>“:<br>    creat_city_list()<br>    for city_name in city:<br>        p = Pinyin()<br>        city_pinyin =  p.get_pinyin(city_name,””)<br>        html_url=getUrl(“<a target="_blank" rel="noopener" href="https://tianqi.911cha.com/&quot;">https://tianqi.911cha.com/&quot;</a> +city_pinyin)<br>        try:  #防止pinyin个别城市解析异常，影响循环<br>          getPic(html_url,city_pinyin)<br>        except:<br>          print(“fail”)<br>          continue</p>
+          <h1 id="实验-天气预报数据库版"><a href="#实验-天气预报数据库版" class="headerlink" title="实验  天气预报数据库版"></a>实验  天气预报数据库版</h1><hr>
+<h1 id="1-实验目的"><a href="#1-实验目的" class="headerlink" title="1.实验目的"></a>1.实验目的</h1><pre><code>1)实时爬取天气信息的相关数据    
+2)熟悉json在线解析成字典数据 
+3)将实时爬取的数据存入到数据库中
+</code></pre>
+<hr>
+<h1 id="2-实验内容"><a href="#2-实验内容" class="headerlink" title="2.实验内容"></a>2.实验内容</h1><pre><code>基于实时爬取天气信息的程序代码，创建数据库，连接数据库，创建一个数据表，将爬取到的天气数据写入到数据表中。
+要求：输入不合法的城市后，会有提示信息。
+</code></pre>
+<hr>
+<h1 id="3-实验报告："><a href="#3-实验报告：" class="headerlink" title="3.实验报告："></a>3.实验报告：</h1><pre><code>3.1 实验代码（含注释）：不是截图，是代码、变量、函数、异常处理
+import pymysql
+from Catch import weather_dict
+
+conn = pymysql.connect(host=&#39;MySQLstu007&#39;,user=&#39;root&#39;,password=&#39;123456&#39;,database=&#39;weather&#39;)
+cursor = conn.cursor()
+city = &quot;insert into userinfo(查询的城市) values(weather_dict[&#39;data&#39;][&#39;city&#39;])&quot;
+cursor.execute(city)
+wendu = &quot;insert into userinfo(温度) values(weather_dict[&#39;data&#39;][&#39;wendu&#39;])&quot;
+ganmao = &quot;insert into userinfo(感冒指数) values(weather_dict[&#39;data&#39;][&#39;ganmao&#39;])&quot;
+conn.commit()
+print(cursor.lastrowid)
+cursor.close()
+conn.close()
+</code></pre>
+<h1 id="3-2-实验运行结果：（截图）"><a href="#3-2-实验运行结果：（截图）" class="headerlink" title="3.2 实验运行结果：（截图）"></a>3.2 实验运行结果：（截图）</h1><p><img src="1.png" alt="1"></p>
+<h1 id="3-3-实验中遇到的问题与解决的方法"><a href="#3-3-实验中遇到的问题与解决的方法" class="headerlink" title="3.3 实验中遇到的问题与解决的方法:"></a>3.3 实验中遇到的问题与解决的方法:</h1><p>1)问题1的描述 数据库没学过<br>问题1的解决方法：csdn自学<br>2)问题2的描述 数据库连接不上<br>问题2的解决方法：csdn自查<br>3)问题3的描述 sql版本出现问题<br>问题3的解决方法：csdn</p>
+<hr>
+<h1 id="4-实验感想与建议"><a href="#4-实验感想与建议" class="headerlink" title="4.实验感想与建议"></a>4.实验感想与建议</h1><pre><code>1)实验中的收获：
+2)对本实验的建议：
+</code></pre>
 
         </div>
         <!-- .entry-content -->

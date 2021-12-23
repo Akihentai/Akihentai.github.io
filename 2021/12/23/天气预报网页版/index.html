@@ -408,44 +408,16 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="天气预报网页版"><a href="#天气预报网页版" class="headerlink" title="天气预报网页版"></a>天气预报网页版</h1><hr>
-<h2 id="F1-py"><a href="#F1-py" class="headerlink" title="F1.py"></a>F1.py</h2><pre><code>import urllib.request
-import xpinyin
-from bs4 import BeautifulSoup
-
-def get_weather(city_pinyin):
-    header = &#123;&#39;User-Agent&#39;:&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0&#39;&#125;
-    website = &quot;http://www.tianqi.com/&quot; + city_pinyin + &quot;.html&quot;
-    req = urllib.request.Request(url=website,headers=header)
-    page = urllib.request.urlopen(req)
-    html = page.read()
-    soup = BeautifulSoup(html.decode(&quot;utf-8&quot;),&quot;html.parser&quot;)  #html.parser表示解析使用的解析器
-    nodes = soup.find_all(&#39;dd&#39;)
-    tody_weather = &quot;&quot;
-    for node in nodes:
-        temp = node.get_text()
-        if (temp.find(&#39;[切换城市]&#39;)):
-            temp = temp[:temp.find(&#39;[切换城市]&#39;)]
-        tody_weather += temp
-return tody_weather
-
-if __name__ == &quot;__main__&quot;:
-    pin = xpinyin.Pinyin()
-    city_pinyin = pin.get_pinyin(&quot;杭州&quot;,&quot;&quot;)
-    tody_weather = get_weather(city_pinyin)
- print(tody_weather)
-</code></pre>
+          <h1 id="实验-天气预报网页版"><a href="#实验-天气预报网页版" class="headerlink" title="实验  天气预报网页版"></a>实验  天气预报网页版</h1><p>1.实验目的<br>    1)实时爬取天气信息的相关数据<br>    2)熟悉json在线解析成字典数据 </p>
 <hr>
-<h2 id="F2-py"><a href="#F2-py" class="headerlink" title="F2.py"></a>F2.py</h2><p>import urllib.request<br>import gzip</p>
-<p>city_name=input(‘请输入要查询的城市名称：’)</p>
-<p>urllib.parse.quote(city_name)</p>
-<p>url=’<a target="_blank" rel="noopener" href="http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)">http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)</a></p>
-<p>weather_data=urllib.request.urlopen(url).read()<br>weather_data=gzip.decompress(weather_data).decode(‘utf-8’)</p>
-<p>weather_dict=eval(weather_data)<br>if weather_dict.get(‘desc’)==’invilad-citykey’:<br>    print(‘您输入的城市未录入’)</p>
-<p>print(‘您查询的城市：’,weather_dict[‘data’][‘city’])<br>print(‘—————‘)<br>print(‘温度’,weather_dict[‘data’][‘wendu’])<br>print(‘感冒指数’,weather_dict[‘data’][‘ganmao’])<br>print(‘—————‘)<br>print(‘昨天的天气’,weather_dict[‘data’][‘yesterday’][‘date’])<br>print(‘天气’,weather_dict[‘data’][‘yesterday’][‘type’])<br>print(‘最高气温’,weather_dict[‘data’][‘yesterday’][‘high’])<br>print(‘最低气温’,weather_dict[‘data’][‘yesterday’][‘low’])<br>print(‘风向’,weather_dict[‘data’][‘yesterday’][‘fx’])<br>print(‘风力’,weather_dict[‘data’][‘yesterday’][‘fl’][-5:-3])<br>print(‘—————‘)</p>
-<p>for each in weather_dict[‘data’][‘forecast’]:<br>    print(‘日期’,each[‘date’])<br>    print(‘天气’,each[‘type’])<br>    print(each[‘high’])<br>    print(each[‘low’])<br>    print(‘风向’,each[‘fengxiang’])<br>    print(‘风力’,each[‘fengli’][-5:-3])<br>    print(‘—————‘)    </p>
+<h1 id="2-实验内容"><a href="#2-实验内容" class="headerlink" title="2.实验内容"></a>2.实验内容</h1><p>基于实时爬取天气信息的程序代码，编写一个网页，网页中输入一个城市名称，点击确定后，即可展示该城市的天气信息。<br>要求：输入不合法的城市后，会有提示信息。</p>
 <hr>
-<h2 id="F3-py"><a href="#F3-py" class="headerlink" title="F3.py"></a>F3.py</h2><p>import sys<br>import urllib.request<br>import gzip<br>import json<br>import xlrd<br>import xlwt<br>from PyQt5 import QtCore, QtGui, QtWidgets<br>from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QRadioButton<br>from PyQt5.QtGui import QPixmap,QPainter<br>from Ui import Ui_Form<br>from xpinyin import Pinyin<br>import time as t</p>
+<h1 id="3-实验报告："><a href="#3-实验报告：" class="headerlink" title="3.实验报告："></a>3.实验报告：</h1><h3 id="3-1-实验代码（含注释）：不是截图，是代码、变量、函数、异常处理"><a href="#3-1-实验代码（含注释）：不是截图，是代码、变量、函数、异常处理" class="headerlink" title="3.1 实验代码（含注释）：不是截图，是代码、变量、函数、异常处理"></a>3.1 实验代码（含注释）：不是截图，是代码、变量、函数、异常处理</h3><h3 id="F1-py"><a href="#F1-py" class="headerlink" title="F1.py"></a>F1.py</h3><p>import sys<br>import urllib.request<br>import gzip<br>import json<br>import xlwt<br>import xlrd<br>import datetime<br>import time<br>city = []<br>date = []<br>data = []</p>
+<p>def creat_city_list():<br>   with open(‘city.txt’,’r’,encoding = ‘utf-8’) as f:<br>      for line in f:<br>         city.append(line.strip(‘\n’).replace(‘ ‘,’’))</p>
+<p>def find_data(city):<br>   city_data = city<br>   for city_name in city_data:<br>      url1 = ‘<a target="_blank" rel="noopener" href="http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)">http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)</a><br>      weather_data = urllib.request.urlopen(url1).read()<br>      weather_data = gzip.decompress(weather_data).decode(‘utf-8’)<br>      weather_dict = json.loads(weather_data)<br>      if weather_dict.get(‘desc’) == ‘invilad-citykey’:<br>         print(‘你输入的城市名有误，或者天气中心未收录你所在城市’)<br>      elif weather_dict.get(‘desc’) ==’OK’:<br>         forecast = weather_dict.get(‘data’).get(‘forecast’)<br>         date.append(forecast[0].get(‘date’))<br>         data.append(‘温度：’+weather_dict.get(‘data’).get(‘wendu’)+’℃ \n’ +’感冒：’+weather_dict.get(‘data’).get(‘ganmao’)+’\n’<br>         +’高温：’+forecast[0].get(‘high’) + ‘低温：’+forecast[0].get(‘low’) + ‘\n’+’天气：’+forecast[0].get(‘type’))<br>def creat_data(city,date,data):<br>   myxls=xlwt.Workbook()  #创建excel表格<br>   sheet1=myxls.add_sheet(u’weather’,cell_overwrite_ok=True)<br>   for i in range(0,len(city)):  #写入数据<br>      sheet1.write(i,0,city[i])<br>   for i in range(0,len(date)):<br>      sheet1.write(i,1,date[i])<br>   for i in range(0,len(data)):<br>      sheet1.write(i,2,data[i])<br>   myxls.save(‘weather.xlsx’)  #保存表格到文件下</p>
+<p>def run():<br>   creat_city_list()<br>   find_data(city)<br>   creat_data(city,date,data)</p>
+<p>def main(h=12,m=0): #每天中文12点获取数据<br>   while True:<br>      now = datetime.datetime.now()<br>      # print(now.hour, now.minute)<br>      if now.hour == h and now.minute == m:<br>         break<br>      # 每隔60秒检测一次<br>      time.sleep(60)<br>   run()<br>main()</p>
+<h3 id="F2-py"><a href="#F2-py" class="headerlink" title="F2.py"></a>F2.py</h3><p>import sys<br>import urllib.request<br>import gzip<br>import json<br>import xlrd<br>import xlwt<br>from PyQt5 import QtCore, QtGui, QtWidgets<br>from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QRadioButton<br>from PyQt5.QtGui import QPixmap,QPainter<br>from Ui import Ui_Form<br>from xpinyin import Pinyin<br>import time as t</p>
 <p>class MyMainForm(QMainWindow, Ui_Form):<br>    def <strong>init</strong>(self, parent=None):<br>        super(MyMainForm, self).<strong>init</strong>(parent)<br>        self.setupUi(self)<br>        #添加查询按钮信号和槽。注意display和showMsg函数不加小括号()<br>        self.pushButton.clicked.connect(self.display)<br>        self.pushButton.clicked.connect(self.showMsg)<br>        #添加退出按钮信号和槽。调用close函数<br>        self.pushButton_2.clicked.connect(self.close)</p>
 <pre><code>def showMsg(self): #显示天气图片数据
     today_time = t.localtime(t.time()) #今天日期
@@ -455,7 +427,7 @@ if __name__ == &quot;__main__&quot;:
     city = self.lineEdit.text()
     p = Pinyin()
     city_pinyin = p.get_pinyin(city, &quot;&quot;)
-
+    self.label_3.setStyleSheet(&quot;background-image: url(\&quot;F://Pic//&quot; + str(month) +&#39;-&#39;+ str(day) + &#39;//&#39; + city_pinyin + &quot;.png\&quot;)&quot;)  #在“当天天气情况：”后的label标签显示对应城市天气图片
 def display(self):  #显示天气文字数据
     datas = xlrd.open_workbook(&#39;D:\\断网天气预报\\weather.xlsx&#39;)
     w = datas.sheets()[0]  #打开表单
@@ -469,8 +441,7 @@ def display(self):  #显示天气文字数据
             self.textBrowser.setText(date + &#39;\n&#39; + data + &#39;\n&#39; + &quot;当天天气情况：&quot;)
 </code></pre>
 <p>if <strong>name</strong> == “<strong>main</strong>“:<br>    #固定的，PyQt5程序都需要QApplication对象。sys.argv是命令行参数列表，确保程序可以双击运行<br>    app = QApplication(sys.argv)<br>    #初始化<br>    myWin = MyMainForm()<br>    #将窗口控件显示在屏幕上<br>    myWin.show()<br>    #程序运行，sys.exit方法确保程序完整退出。<br>    sys.exit(app.exec_())</p>
-<hr>
-<h2 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h2><p>import sys<br>import urllib.request<br>import gzip<br>import json<br>import xlrd<br>import xlwt<br>from PyQt5 import QtCore, QtGui, QtWidgets<br>from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QRadioButton<br>from PyQt5.QtGui import QPixmap,QPainter<br>from Ui import Ui_Form<br>from xpinyin import Pinyin<br>import time as t</p>
+<h3 id="F3-py"><a href="#F3-py" class="headerlink" title="F3.py"></a>F3.py</h3><p>mport sys<br>import urllib.request<br>import gzip<br>import json<br>import xlrd<br>import xlwt<br>from PyQt5 import QtCore, QtGui, QtWidgets<br>from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QRadioButton<br>from PyQt5.QtGui import QPixmap,QPainter<br>from Ui import Ui_Form<br>from xpinyin import Pinyin<br>import time as t</p>
 <p>class MyMainForm(QMainWindow, Ui_Form):<br>    def <strong>init</strong>(self, parent=None):<br>        super(MyMainForm, self).<strong>init</strong>(parent)<br>        self.setupUi(self)<br>        #添加查询按钮信号和槽。注意display和showMsg函数不加小括号()<br>        self.pushButton.clicked.connect(self.display)<br>        self.pushButton.clicked.connect(self.showMsg)<br>        #添加退出按钮信号和槽。调用close函数<br>        self.pushButton_2.clicked.connect(self.close)</p>
 <pre><code>def showMsg(self): #显示天气图片数据
     today_time = t.localtime(t.time()) #今天日期
@@ -480,7 +451,7 @@ def display(self):  #显示天气文字数据
     city = self.lineEdit.text()
     p = Pinyin()
     city_pinyin = p.get_pinyin(city, &quot;&quot;)
-
+    self.label_3.setStyleSheet(&quot;background-image: url(\&quot;F://Pic//&quot; + str(month) +&#39;-&#39;+ str(day) + &#39;//&#39; + city_pinyin + &quot;.png\&quot;)&quot;)  #在“当天天气情况：”后的label标签显示对应城市天气图片
 def display(self):  #显示天气文字数据
     datas = xlrd.open_workbook(&#39;D:\\断网天气预报\\weather.xlsx&#39;)
     w = datas.sheets()[0]  #打开表单
@@ -494,6 +465,46 @@ def display(self):  #显示天气文字数据
             self.textBrowser.setText(date + &#39;\n&#39; + data + &#39;\n&#39; + &quot;当天天气情况：&quot;)
 </code></pre>
 <p>if <strong>name</strong> == “<strong>main</strong>“:<br>    #固定的，PyQt5程序都需要QApplication对象。sys.argv是命令行参数列表，确保程序可以双击运行<br>    app = QApplication(sys.argv)<br>    #初始化<br>    myWin = MyMainForm()<br>    #将窗口控件显示在屏幕上<br>    myWin.show()<br>    #程序运行，sys.exit方法确保程序完整退出。<br>    sys.exit(app.exec_())</p>
+<h3 id="ui-py"><a href="#ui-py" class="headerlink" title="ui.py"></a>ui.py</h3><p>(用到pycharm中的Qt designer和Pyuic<br>确定各个控件的位置，大小后保存再本地项目下，利用Pyuic转为python文件名为Ui.py后获得代码：)</p>
+<p>rom PyQt5 import QtCore, QtGui, QtWidgets<br>from PyQt5.QtWidgets import QApplication,QLineEdit,QFormLayout,QWidget<br>from PyQt5.QtGui import QIntValidator,QDoubleValidator,QFont<br>from PyQt5.QtCore import Qt<br>from PyQt5.QtGui import QPalette<br>import sys<br>import qtawesome</p>
+<p>class Ui_Form(object):<br>    def setupUi(self, Form):<br>        Form.setObjectName(“Form”)<br>        Form.resize(575, 432)<br>        Form.setStyleSheet(“background-image: url(&quot;F://Pic//th.jpg&quot;)”)<br>        self.listView = QtWidgets.QListView(Form)<br>        self.listView.setGeometry(QtCore.QRect(450, 240, 131, 121))<br>        self.listView.setStyleSheet(“background-image: url(&quot;F://Pic//00.png&quot;)”)<br>        self.listView.setObjectName(“listView”)<br>        self.textBrowser = QtWidgets.QTextBrowser(Form)<br>        self.textBrowser.setGeometry(QtCore.QRect(0, 90, 581, 271))<br>        self.textBrowser.setStyleSheet(“background-color: rgb(85, 170, 255)”)<br>        self.textBrowser.setObjectName(“textBrowser”)<br>        self.label = QtWidgets.QLabel(Form)<br>        self.label.setGeometry(QtCore.QRect(470, 190, 111, 41))<br>        self.label.setStyleSheet(“background-color: blue”)<br>        self.label.setObjectName(“label”)<br>        self.pushButton = QtWidgets.QPushButton(Form)<br>        self.pushButton.setGeometry(QtCore.QRect(110, 390, 75, 23))<br>        self.pushButton.setStyleSheet(“background-color: blue\n”””)<br>        self.pushButton.setObjectName(“pushButton”)<br>        self.pushButton_2 = QtWidgets.QPushButton(Form)<br>        self.pushButton_2.setGeometry(QtCore.QRect(350, 390, 75, 23))<br>        self.pushButton_2.setStyleSheet(“background-color: blue”)<br>        self.pushButton_2.setObjectName(“pushButton_2”)<br>        self.lineEdit = QtWidgets.QLineEdit(Form)<br>        self.lineEdit.setGeometry(QtCore.QRect(220, 40, 261, 31))<br>        self.lineEdit.setObjectName(“lineEdit”)<br>        self.label_2 = QtWidgets.QLabel(Form)<br>        self.label_2.setGeometry(QtCore.QRect(80, 40, 121, 31))<br>        self.label_2.setObjectName(“label_2”)<br>        self.label_2.raise_()<br>        self.label_3 = QtWidgets.QLabel(Form)<br>        self.label_3.setGeometry(QtCore.QRect(150, 210, 51, 51))<br>        self.label_3.setObjectName(“label_3”)<br>        self.textBrowser.raise_()<br>        self.listView.raise_()<br>        self.label.raise_()<br>        self.pushButton.raise_()<br>        self.pushButton_2.raise_()<br>        self.lineEdit.raise_()<br>        self.label_3.raise_()</p>
+<pre><code>    self.retranslateUi(Form)
+    QtCore.QMetaObject.connectSlotsByName(Form)
+
+def retranslateUi(self, Form):
+    _translate = QtCore.QCoreApplication.translate
+    Form.setWindowTitle(_translate(&quot;Form&quot;, &quot;Form&quot;))
+    self.label.setText(_translate(&quot;Form&quot;, &quot;&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=\&quot; font-size:12pt;\&quot;&gt;获取更多信息&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;))
+    self.pushButton.setToolTip(_translate(&quot;Form&quot;, &quot;&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=\&quot; font-size:12pt;\&quot;&gt;查询&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;))
+    self.pushButton.setText(_translate(&quot;Form&quot;, &quot;查询&quot;))
+    self.pushButton_2.setText(_translate(&quot;Form&quot;, &quot;退出&quot;))
+    self.label_2.setText(_translate(&quot;Form&quot;, &quot;&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=\&quot; font-size:12pt;\&quot;&gt;输入城市名称：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;))
+    # 调整透明度
+    Form.setWindowOpacity(0.9)
+    Form.setWindowTitle(&quot;天气预报&quot;)
+    # 美化查询按钮
+    self.pushButton_2.setStyleSheet(&#39;&#39;&#39;QPushButton&#123;background:&#39;white&#39;;border-radius:15px;&#125;
+                    QPushButton:hover&#123;background:green;&#125;&#39;&#39;&#39;)
+    spin_icon2 = qtawesome.icon(&#39;fa.ban&#39;, color=&#39;black&#39;)
+    self.pushButton_2.setIcon(spin_icon2)
+    # 美化退出按钮
+    self.pushButton.setStyleSheet(&#39;&#39;&#39;QPushButton&#123;background:&#39;white&#39;;border-radius:15px;&#125;
+                    QPushButton:hover&#123;background:green;&#125;&#39;&#39;&#39;)
+    spin_icon = qtawesome.icon(&#39;fa.search&#39;, color=&#39;black&#39;)
+    self.pushButton.setIcon(spin_icon)  # Qpushbutton设置图标
+    # 美化标签
+    self.label.setStyleSheet(&#39;&#39;&#39;QLabel&#123;color:black;font-size:40px;font-family:Roman times;&#125;&#39;&#39;&#39;)
+
+    #美化输出框
+    self.textBrowser.setFontPointSize(14)
+    self.textBrowser.setFontItalic(False)
+    #美化输入框
+    self.lineEdit.setFont(QFont(&#39;Arial&#39;, 12))
+</code></pre>
+<h3 id="3-2-实验运行结果：（截图）"><a href="#3-2-实验运行结果：（截图）" class="headerlink" title="3.2 实验运行结果：（截图）"></a>3.2 实验运行结果：（截图）</h3><p><img src="1.png" alt="1"></p>
+<h3 id="3-3-实验中遇到的问题与解决的方法。"><a href="#3-3-实验中遇到的问题与解决的方法。" class="headerlink" title="3.3 实验中遇到的问题与解决的方法。"></a>3.3 实验中遇到的问题与解决的方法。</h3><p>1)问题1的描述 不明白不同程序文件间数据传输<br>问题1的解决方法：把数据保存到本地，需要时读取<br>2)问题2的描述 不懂UI界面制作<br>问题2的解决方法：利用QT designer设计好，保存，然后将文件转为py后缀文件<br>3)问题3的描述 制作的网页调用py文件出错<br>问题3的解决方法：没有制作网页，改为制作界面</p>
+<hr>
+<h3 id="4-实验感想与建议"><a href="#4-实验感想与建议" class="headerlink" title="4.实验感想与建议"></a>4.实验感想与建议</h3><p>1)实验中的收获：学习了Django的部分应用，学习了remi库的部分知识，学习了很多没有了解过的web包<br>2)对本实验的建议：难度很大，用html+js写效率更好，也更容易。</p>
 
         </div>
         <!-- .entry-content -->
