@@ -412,6 +412,8 @@
 <hr>
 <h1 id="2-实验内容"><a href="#2-实验内容" class="headerlink" title="2.实验内容"></a>2.实验内容</h1><p>基于实时爬取天气信息的程序代码，编写一个网页，网页中输入一个城市名称，点击确定后，即可展示该城市的天气信息。<br>要求：输入不合法的城市后，会有提示信息。</p>
 <hr>
+<h1 id="运行演示"><a href="#运行演示" class="headerlink" title="运行演示:"></a>运行演示:</h1><p><a target="_blank" rel="noopener" href="http://116.62.232.197/weatheryunxing/">http://116.62.232.197/weatheryunxing/</a></p>
+<hr>
 <h1 id="3-实验报告："><a href="#3-实验报告：" class="headerlink" title="3.实验报告："></a>3.实验报告：</h1><h3 id="3-1-实验代码（含注释）：不是截图，是代码、变量、函数、异常处理"><a href="#3-1-实验代码（含注释）：不是截图，是代码、变量、函数、异常处理" class="headerlink" title="3.1 实验代码（含注释）：不是截图，是代码、变量、函数、异常处理"></a>3.1 实验代码（含注释）：不是截图，是代码、变量、函数、异常处理</h3><h3 id="F1-py"><a href="#F1-py" class="headerlink" title="F1.py"></a>F1.py</h3><p>import sys<br>import urllib.request<br>import gzip<br>import json<br>import xlwt<br>import xlrd<br>import datetime<br>import time<br>city = []<br>date = []<br>data = []</p>
 <p>def creat_city_list():<br>   with open(‘city.txt’,’r’,encoding = ‘utf-8’) as f:<br>      for line in f:<br>         city.append(line.strip(‘\n’).replace(‘ ‘,’’))</p>
 <p>def find_data(city):<br>   city_data = city<br>   for city_name in city_data:<br>      url1 = ‘<a target="_blank" rel="noopener" href="http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)">http://wthrcdn.etouch.cn/weather_mini?city=&#39;+urllib.parse.quote(city_name)</a><br>      weather_data = urllib.request.urlopen(url1).read()<br>      weather_data = gzip.decompress(weather_data).decode(‘utf-8’)<br>      weather_dict = json.loads(weather_data)<br>      if weather_dict.get(‘desc’) == ‘invilad-citykey’:<br>         print(‘你输入的城市名有误，或者天气中心未收录你所在城市’)<br>      elif weather_dict.get(‘desc’) ==’OK’:<br>         forecast = weather_dict.get(‘data’).get(‘forecast’)<br>         date.append(forecast[0].get(‘date’))<br>         data.append(‘温度：’+weather_dict.get(‘data’).get(‘wendu’)+’℃ \n’ +’感冒：’+weather_dict.get(‘data’).get(‘ganmao’)+’\n’<br>         +’高温：’+forecast[0].get(‘high’) + ‘低温：’+forecast[0].get(‘low’) + ‘\n’+’天气：’+forecast[0].get(‘type’))<br>def creat_data(city,date,data):<br>   myxls=xlwt.Workbook()  #创建excel表格<br>   sheet1=myxls.add_sheet(u’weather’,cell_overwrite_ok=True)<br>   for i in range(0,len(city)):  #写入数据<br>      sheet1.write(i,0,city[i])<br>   for i in range(0,len(date)):<br>      sheet1.write(i,1,date[i])<br>   for i in range(0,len(data)):<br>      sheet1.write(i,2,data[i])<br>   myxls.save(‘weather.xlsx’)  #保存表格到文件下</p>
@@ -562,7 +564,7 @@ def retranslateUi(self, Form):
               Next Post</span>
               <div class="info">
                 <h3>
-                字符串</h3>
+                课本的三个作业</h3>
                 <hr>
               </div>
             </a>
