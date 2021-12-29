@@ -410,7 +410,7 @@
         <div class="entry-content">
           <h1 id="4-1-字符串"><a href="#4-1-字符串" class="headerlink" title="4.1 字符串"></a>4.1 字符串</h1><p>假定给定两个字符串（可以是空串）s1和s2,要将这两个串合并在一起，要求是：s1串的第一个字符与s2串的第一个字符连接在一起，后续以此类推。若一个串的长度大于另一个串的长度，则保留长串的剩余字符，即连接到新串的末尾即可。例如：若s1=’abcd’、s2=’efghi’，则新串为：‘aebfcgdhi’.</p>
 <hr>
-<h1 id="运行演示"><a href="#运行演示" class="headerlink" title="运行演示:"></a>运行演示:</h1><p><a target="_blank" rel="noopener" href="http://116.62.232.197/hebing/">http://116.62.232.197/hebing/</a></p>
+<h1 id="运行演示"><a href="#运行演示" class="headerlink" title="运行演示:"></a>运行演示:</h1><p><a target="_blank" rel="noopener" href="http://10.12.214.157:5000/">http://10.12.214.157:5000/</a></p>
 <hr>
 <h2 id="1-实验代码"><a href="#1-实验代码" class="headerlink" title="1.实验代码"></a>1.实验代码</h2><h2 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h2><p>s1 = input(“请输入字符串s1:”)<br>s2 = input(“请输入字符串s2:”)<br>list1 = []<br>list2 = []<br>i = 0<br>j = 0<br>k = 0<br>m = 0<br>n = 0<br>if len(s1) == 0:<br>    print(s2)<br>elif len(s2) == 0:<br>    print(s1)<br>else:<br>    for i in range(len(s1)):<br>            list1.append(s1[i:i+1])<br>            i=i+1<br>    for j in range(len(s2)):<br>            list2.append(s2[j:j+1])<br>            j= j+1</p>
 <pre><code>s =list1[0] +list2[0]
