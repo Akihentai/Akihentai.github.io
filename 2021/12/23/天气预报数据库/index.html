@@ -419,23 +419,7 @@
 要求：输入不合法的城市后，会有提示信息。
 </code></pre>
 <hr>
-<h1 id="3-实验报告："><a href="#3-实验报告：" class="headerlink" title="3.实验报告："></a>3.实验报告：</h1><pre><code>3.1 实验代码（含注释）：不是截图，是代码、变量、函数、异常处理
-import pymysql
-from Catch import weather_dict
-
-conn = pymysql.connect(host=&#39;MySQLstu007&#39;,user=&#39;root&#39;,password=&#39;123456&#39;,database=&#39;weather&#39;)
-cursor = conn.cursor()
-city = &quot;insert into userinfo(查询的城市) values(weather_dict[&#39;data&#39;][&#39;city&#39;])&quot;
-cursor.execute(city)
-wendu = &quot;insert into userinfo(温度) values(weather_dict[&#39;data&#39;][&#39;wendu&#39;])&quot;
-ganmao = &quot;insert into userinfo(感冒指数) values(weather_dict[&#39;data&#39;][&#39;ganmao&#39;])&quot;
-conn.commit()
-print(cursor.lastrowid)
-cursor.close()
-conn.close()
-</code></pre>
-<h1 id="3-2-实验运行结果：（截图）"><a href="#3-2-实验运行结果：（截图）" class="headerlink" title="3.2 实验运行结果：（截图）"></a>3.2 实验运行结果：（截图）</h1><p><img src="1.png" alt="1"></p>
-<h1 id="3-3-实验中遇到的问题与解决的方法"><a href="#3-3-实验中遇到的问题与解决的方法" class="headerlink" title="3.3 实验中遇到的问题与解决的方法:"></a>3.3 实验中遇到的问题与解决的方法:</h1><p>1)问题1的描述 数据库没学过<br>问题1的解决方法：csdn自学<br>2)问题2的描述 数据库连接不上<br>问题2的解决方法：csdn自查<br>3)问题3的描述 sql版本出现问题<br>问题3的解决方法：csdn</p>
+<h1 id="3-实验报告："><a href="#3-实验报告：" class="headerlink" title="3.实验报告："></a>3.实验报告：</h1><h1 id="3-2-实验运行结果：（截图）"><a href="#3-2-实验运行结果：（截图）" class="headerlink" title="3.2 实验运行结果：（截图）"></a>3.2 实验运行结果：（截图）</h1><h1 id="3-3-实验中遇到的问题与解决的方法"><a href="#3-3-实验中遇到的问题与解决的方法" class="headerlink" title="3.3 实验中遇到的问题与解决的方法:"></a>3.3 实验中遇到的问题与解决的方法:</h1><p>1)问题1的描述 数据库没学过<br>问题1的解决方法：csdn自学<br>2)问题2的描述 数据库连接不上<br>问题2的解决方法：csdn自查<br>3)问题3的描述 sql版本出现问题<br>问题3的解决方法：csdn</p>
 <hr>
 <h1 id="4-实验感想与建议"><a href="#4-实验感想与建议" class="headerlink" title="4.实验感想与建议"></a>4.实验感想与建议</h1><pre><code>1)实验中的收获：
 2)对本实验的建议：
